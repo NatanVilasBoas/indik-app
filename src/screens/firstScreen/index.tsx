@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { TextThemed } from "./styles";
 
-export default function Index() {
+export default function FirstScreen() {
   return (
     <View
       style={{
