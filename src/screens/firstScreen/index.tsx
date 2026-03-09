@@ -10,7 +10,9 @@ export default function FirstScreen() {
         alignItems: "center",
       }}
     >
-      <TextThemed>Edit app/index.tsx to edit this screen.</TextThemed>
+      <TextThemed>
+        Edit screens/firstScreen/index.tsx to edit this screen.
+      </TextThemed>
     </View>
   );
 }
