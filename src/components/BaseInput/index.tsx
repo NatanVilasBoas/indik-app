@@ -46,7 +46,7 @@ export default function BaseInput({
         {showClearIcon && value !== "" && disabled === false && (
           <Icon name="clear" onPress={handleClearInput} />
         )}
-        {disabled && <Icon name="lockBold" color="black" size={18} />}
+        {disabled && <Icon name="lockThin" color="black" size={18} />}
       </IconContainer>
     </BaseInputContainer>
   );
