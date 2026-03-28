@@ -1,9 +1,11 @@
 import BaseInput from "@/components/BaseInput";
 import theme from "@/shared/theme/theme";
+import { useState } from "react";
 import { View } from "react-native";
 import { TextThemed } from "./styles";
 
 export default function FirstScreen() {
+  const [value, setValue] = useState("");
   return (
     <View
       style={{
@@ -22,6 +24,8 @@ export default function FirstScreen() {
           label="Título"
           placeholder="Teste input container"
           supportText="Texto de suporte"
+          value={value}
+          onChangeText={setValue}
         />
       </View>
     </View>
