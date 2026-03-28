@@ -1,11 +1,19 @@
 import { styled } from "styled-components/native";
 
-export const Container = styled.View`
+interface ContainerProps {
+  disabled?: boolean;
+}
+
+export const Container = styled.View<ContainerProps>`
+  flex-direction: row;
+  justify-content: space-between;
   padding: 14px 12px;
   border-radius: 1000px;
-  border-width: 1px;
+  border-width: 2px;
   width: 100%;
   border-color: ${(props) => props.theme.colors.greyLight};
+  background-color: ${(props) =>
+    props.disabled ? props.theme.colors.greyLight2 : "transparent"};
 `;
 
 export const LabelText = styled.Text`

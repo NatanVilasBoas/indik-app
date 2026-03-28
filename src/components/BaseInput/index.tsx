@@ -1,12 +1,15 @@
 import React from "react";
-import { Button, TextInputProps } from "react-native";
+import { TextInputProps } from "react-native";
 import BaseInputContainer from "../BaseInputContainer";
-import { StyledInput } from "./styles";
+import Icon from "../Icon";
+import { IconContainer, StyledInput } from "./styles";
 
 interface BaseInputProps extends TextInputProps {
   label?: string;
   required?: boolean;
   supportText?: string;
+  disabled?: boolean;
+  showClearIcon?: boolean;
 }
 
 export default function BaseInput({
@@ -15,6 +18,8 @@ export default function BaseInput({
   supportText,
   value,
   onChangeText,
+  disabled = false,
+  showClearIcon = true,
   ...props
 }: BaseInputProps) {
   const handleClearInput = () => {
@@ -28,11 +33,21 @@ export default function BaseInput({
       label={label}
       required={required}
       supportText={supportText}
+      disabled={disabled}
     >
-      <StyledInput value={value} onChangeText={onChangeText} {...props} />
-      {value !== "" && onChangeText && (
-        <Button title="Clear" onPress={handleClearInput} />
-      )}
+      <StyledInput
+        editable={!disabled}
+        disabled={disabled}
+        value={value}
+        onChangeText={onChangeText}
+        {...props}
+      />
+      <IconContainer>
+        {showClearIcon && value !== "" && disabled === false && (
+          <Icon name="clear" onPress={handleClearInput} />
+        )}
+        {disabled && <Icon name="lockBold" color="black" size={18} />}
+      </IconContainer>
     </BaseInputContainer>
   );
 }
