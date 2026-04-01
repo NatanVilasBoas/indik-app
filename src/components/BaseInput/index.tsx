@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextInputProps } from "react-native";
 import BaseInputContainer from "../BaseInputContainer";
 import Icon from "../Icon";
@@ -9,7 +9,6 @@ interface BaseInputProps extends TextInputProps {
   required?: boolean;
   supportText?: string;
   disabled?: boolean;
-  showClearIcon?: boolean;
 }
 
 export default function BaseInput({
@@ -19,9 +18,10 @@ export default function BaseInput({
   value,
   onChangeText,
   disabled = false,
-  showClearIcon = true,
   ...props
 }: BaseInputProps) {
+  const [isFocused, setIsFocused] = useState(false);
+
   const handleClearInput = () => {
     if (onChangeText) {
       onChangeText("");
@@ -40,10 +40,12 @@ export default function BaseInput({
         disabled={disabled}
         value={value}
         onChangeText={onChangeText}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         {...props}
       />
       <IconContainer>
-        {showClearIcon && value !== "" && disabled === false && (
+        {value !== "" && disabled === false && isFocused && (
           <Icon name="clear" onPress={handleClearInput} />
         )}
         {disabled && <Icon name="lockThin" color="black" size={18} />}
