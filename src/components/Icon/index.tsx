@@ -3,13 +3,11 @@ import { Pressable, StyleProp, View, ViewStyle } from "react-native";
 import { ArrowLeftIcon } from "../../../assets/icons/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../../assets/icons/ArrowRightIcon";
 import { ClearIcon } from "../../../assets/icons/ClearIcon";
-import LockBoldIcon from "../../../assets/icons/LockBoldIcon";
 import LockThinIcon from "../../../assets/icons/LockThinIcon";
 
 const iconRegistry = {
   clear: ClearIcon,
   lockThin: LockThinIcon,
-  lockBold: LockBoldIcon,
   arrowRight: ArrowRightIcon,
   arrowLeft: ArrowLeftIcon,
 };
