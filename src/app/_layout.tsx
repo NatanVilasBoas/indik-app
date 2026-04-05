@@ -19,7 +19,14 @@ export default function RootLayout() {
           headerTitleAlign: "left",
           headerLeft: () => <Icon name="arrowLeft" color="white" />,
         }}
-      />
+      >
+        <Stack.Screen
+          name="index"
+          options={{
+            title: "Primeira tela",
+          }}
+        />
+      </Stack>
     </ThemeProvider>
   );
 }
