@@ -3,6 +3,8 @@ import { Pressable, StyleProp, View, ViewStyle } from "react-native";
 import { ArrowLeftIcon } from "../../../assets/icons/ArrowLeftIcon";
 import { ArrowRightIcon } from "../../../assets/icons/ArrowRightIcon";
 import { ClearIcon } from "../../../assets/icons/ClearIcon";
+import EyeCloseIcon from "../../../assets/icons/EyeCloseIcon";
+import EyeOpenIcon from "../../../assets/icons/EyeOpenIcon";
 import LockThinIcon from "../../../assets/icons/LockThinIcon";
 
 const iconRegistry = {
@@ -10,6 +12,8 @@ const iconRegistry = {
   lockThin: LockThinIcon,
   arrowRight: ArrowRightIcon,
   arrowLeft: ArrowLeftIcon,
+  eyeOpen: EyeOpenIcon,
+  eyeClose: EyeCloseIcon,
 };
 
 export interface IconProps {

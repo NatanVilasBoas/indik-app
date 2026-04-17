@@ -2,6 +2,7 @@ import { styled } from "styled-components/native";
 
 interface ContainerProps {
   disabled?: boolean;
+  focused?: boolean;
 }
 
 export const Container = styled.View<ContainerProps>`
@@ -11,7 +12,8 @@ export const Container = styled.View<ContainerProps>`
   border-radius: 1000px;
   border-width: 2px;
   width: 100%;
-  border-color: ${(props) => props.theme.colors.greyLight};
+  border-color: ${(props) =>
+    props.focused ? props.theme.colors.black : props.theme.colors.greyLight};
   background-color: ${(props) =>
     props.disabled ? props.theme.colors.greyLight2 : "transparent"};
 `;

@@ -7,6 +7,7 @@ interface BaseInputProps {
   required?: boolean;
   supportText?: string;
   disabled?: boolean;
+  focused?: boolean;
 }
 
 export default function BaseInputContainer({
@@ -15,6 +16,7 @@ export default function BaseInputContainer({
   required,
   supportText,
   disabled = false,
+  focused = false,
 }: BaseInputProps) {
   return (
     <>
@@ -24,7 +26,9 @@ export default function BaseInputContainer({
           {required && <RedLabelText> *</RedLabelText>}
         </LabelText>
       )}
-      <Container disabled={disabled}>{children}</Container>
+      <Container disabled={disabled} focused={focused}>
+        {children}
+      </Container>
       {supportText && <SupportText>{supportText}</SupportText>}
     </>
   );

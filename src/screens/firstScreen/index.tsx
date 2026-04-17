@@ -1,4 +1,5 @@
 import BaseInput from "@/components/BaseInput";
+import BasePasswordInput from "@/components/BasePasswordInput";
 import theme from "@/shared/theme/theme";
 import { useState } from "react";
 import { View } from "react-native";
@@ -24,9 +25,10 @@ export default function FirstScreen() {
           value={value}
           onChangeText={setValue}
         />
-        <BaseInput
+        <BasePasswordInput
           required
-          label="Título"
+          label="Senha"
+          disabled
           placeholder="Teste input container"
           supportText="Texto de suporte"
           value={value2}

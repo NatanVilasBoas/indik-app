@@ -4,29 +4,24 @@ import BaseInputContainer from "../BaseInputContainer";
 import Icon from "../Icon";
 import { IconContainer, StyledInput } from "./styles";
 
-interface BaseInputProps extends TextInputProps {
+interface BasePasswordProps extends TextInputProps {
   label?: string;
   required?: boolean;
   supportText?: string;
   disabled?: boolean;
 }
 
-export default function BaseInput({
+const BasePasswordInput = ({
   label,
   required,
   supportText,
-  value,
+  disabled,
   onChangeText,
-  disabled = false,
+  value,
   ...props
-}: BaseInputProps) {
+}: BasePasswordProps) => {
+  const [showPassword, setShowPassword] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-
-  const handleClearInput = () => {
-    if (onChangeText) {
-      onChangeText("");
-    }
-  };
 
   return (
     <BaseInputContainer
@@ -37,6 +32,7 @@ export default function BaseInput({
       focused={isFocused}
     >
       <StyledInput
+        secureTextEntry={!showPassword}
         editable={!disabled}
         disabled={disabled}
         value={value}
@@ -46,11 +42,24 @@ export default function BaseInput({
         {...props}
       />
       <IconContainer>
-        {value !== "" && disabled === false && isFocused && (
-          <Icon name="clear" onPress={handleClearInput} />
+        {showPassword ? (
+          <Icon
+            name="eyeOpen"
+            onPress={() => setShowPassword(false)}
+            color="black"
+            size={18}
+          />
+        ) : (
+          <Icon
+            name="eyeClose"
+            onPress={() => setShowPassword(true)}
+            color="black"
+            size={18}
+          />
         )}
-        {disabled && <Icon name="lockThin" color="black" size={18} />}
       </IconContainer>
     </BaseInputContainer>
   );
-}
+};
+
+export default BasePasswordInput;
