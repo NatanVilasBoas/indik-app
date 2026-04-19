@@ -2,6 +2,7 @@ import BaseInput from "@/components/BaseInput";
 import BaseLinkInput from "@/components/BaseLinkInput";
 import BasePasswordInput from "@/components/BasePasswordInput";
 import BaseSearchInput from "@/components/BaseSearchInput";
+import BaseValueInput from "@/components/BaseValueInput";
 import theme from "@/shared/theme/theme";
 import { useState } from "react";
 import { View } from "react-native";
@@ -42,7 +43,14 @@ export default function FirstScreen() {
           onChangeText={setValue3}
         />
         <BaseLinkInput
+          disabled
           placeholder="Insira o link"
+          value={value}
+          onChangeText={setValue}
+        />
+        <BaseValueInput
+          disabled
+          placeholder="0,00"
           value={value}
           onChangeText={setValue}
         />

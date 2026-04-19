@@ -2,9 +2,9 @@ import theme from "@/shared/theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import BaseInput from "../BaseInput";
-import Icon from "../Icon";
+import { IconText } from "./styles";
 
-interface BaseLinkInputProps {
+interface BaseValueInputProps {
   label?: string;
   required?: boolean;
   supportText?: string;
@@ -14,7 +14,7 @@ interface BaseLinkInputProps {
   onChangeText: (text: string) => void;
 }
 
-const BaseLinkInput = ({
+const BaseValueInput = ({
   label,
   required,
   supportText,
@@ -22,7 +22,7 @@ const BaseLinkInput = ({
   placeholder,
   value,
   onChangeText,
-}: BaseLinkInputProps) => {
+}: BaseValueInputProps) => {
   return (
     <BaseInput
       label={label}
@@ -50,11 +50,11 @@ const BaseLinkInput = ({
             height: 46,
           }}
         >
-          <Icon name="link" color="black" size={18} />
+          <IconText>R$</IconText>
         </LinearGradient>
       }
     />
   );
 };
 
-export default BaseLinkInput;
+export default BaseValueInput;
