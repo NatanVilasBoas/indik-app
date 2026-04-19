@@ -9,12 +9,14 @@ export const LeftIconContainer = styled.View`
   flex-direction: row;
   align-items: center;
   width: 10%;
+  padding-left: 16px;
 `;
 
 export const RightIconContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-right: 16px;
   width: 10%;
   gap: 24px;
 `;

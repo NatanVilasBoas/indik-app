@@ -31,7 +31,7 @@ const BasePasswordInput = ({
       disabled={disabled}
       focused={isFocused}
       rightIcon={
-        <View style={{ paddingRight: 16 }}>
+        <View>
           {showPassword ? (
             <Icon
               name="eyeOpen"
