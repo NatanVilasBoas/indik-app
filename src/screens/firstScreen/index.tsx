@@ -43,13 +43,11 @@ export default function FirstScreen() {
           onChangeText={setValue3}
         />
         <BaseLinkInput
-          disabled
           placeholder="Insira o link"
           value={value}
           onChangeText={setValue}
         />
         <BaseValueInput
-          disabled
           placeholder="0,00"
           value={value}
           onChangeText={setValue}
