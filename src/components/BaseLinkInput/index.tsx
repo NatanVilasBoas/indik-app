@@ -1,3 +1,4 @@
+import theme from "@/shared/theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import BaseInput from "../BaseInput";
@@ -34,15 +35,15 @@ const BaseLinkInput = ({
       onChangeText={onChangeText}
       leftIcon={
         <LinearGradient
-          colors={["#B0B0B0", "#FFFFFF"]}
+          colors={[theme.colors.greyLight, "#FFFFFF"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={{
-            borderRadius: 8,
+            borderTopLeftRadius: 100,
+            borderBottomLeftRadius: 100,
             alignItems: "center",
             justifyContent: "center",
-            paddingLeft: 16,
-            width: 40,
+            width: 46,
             height: 46,
           }}
         >
