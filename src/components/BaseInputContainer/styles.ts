@@ -9,7 +9,6 @@ export const LeftIconContainer = styled.View`
   flex-direction: row;
   align-items: center;
   width: 10%;
-  padding-left: 16px;
 `;
 
 export const RightIconContainer = styled.View`

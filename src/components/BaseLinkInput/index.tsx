@@ -39,11 +39,11 @@ const BaseLinkInput = ({
           end={{ x: 1, y: 0 }}
           style={{
             borderRadius: 8,
-            padding: 4,
             alignItems: "center",
             justifyContent: "center",
-            width: 32,
-            height: 32,
+            paddingLeft: 16,
+            width: 40,
+            height: 46,
           }}
         >
           <Icon name="link" color="black" size={18} />

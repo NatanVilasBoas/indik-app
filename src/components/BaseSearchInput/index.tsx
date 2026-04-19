@@ -33,7 +33,7 @@ const BaseSearchInput = ({
       value={value}
       onChangeText={onChangeText}
       leftIcon={
-        <View>
+        <View style={{ paddingLeft: 16 }}>
           <Icon name="search" color="black" size={18} />
         </View>
       }
