@@ -5,10 +5,23 @@ interface ContainerProps {
   focused?: boolean;
 }
 
+export const LeftIconContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  width: 10%;
+`;
+
+export const RightIconContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  gap: 24px;
+`;
+
 export const Container = styled.View<ContainerProps>`
   flex-direction: row;
   justify-content: space-between;
-  padding: 14px 12px;
   border-radius: 1000px;
   border-width: 2px;
   width: 100%;
@@ -16,6 +29,14 @@ export const Container = styled.View<ContainerProps>`
     props.focused ? props.theme.colors.black : props.theme.colors.greyLight};
   background-color: ${(props) =>
     props.disabled ? props.theme.colors.greyLight2 : "transparent"};
+`;
+
+export const Content = styled.View`
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  gap: 8px;
+  padding: 14px 16px;
 `;
 
 export const LabelText = styled.Text`

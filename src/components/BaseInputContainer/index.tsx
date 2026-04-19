@@ -1,5 +1,14 @@
 import React from "react";
-import { Container, LabelText, RedLabelText, SupportText } from "./styles";
+import { View } from "react-native";
+import {
+  Container,
+  Content,
+  LabelText,
+  LeftIconContainer,
+  RedLabelText,
+  RightIconContainer,
+  SupportText,
+} from "./styles";
 
 interface BaseInputProps {
   children?: React.ReactNode;
@@ -8,6 +17,8 @@ interface BaseInputProps {
   supportText?: string;
   disabled?: boolean;
   focused?: boolean;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 export default function BaseInputContainer({
@@ -17,9 +28,11 @@ export default function BaseInputContainer({
   supportText,
   disabled = false,
   focused = false,
+  leftIcon,
+  rightIcon,
 }: BaseInputProps) {
   return (
-    <>
+    <View>
       {label && (
         <LabelText>
           {label}
@@ -27,9 +40,11 @@ export default function BaseInputContainer({
         </LabelText>
       )}
       <Container disabled={disabled} focused={focused}>
-        {children}
+        {leftIcon && <LeftIconContainer>{leftIcon}</LeftIconContainer>}
+        <Content>{children}</Content>
+        {rightIcon && <RightIconContainer>{rightIcon}</RightIconContainer>}
       </Container>
       {supportText && <SupportText>{supportText}</SupportText>}
-    </>
+    </View>
   );
 }

@@ -11,9 +11,3 @@ export const StyledInput = styled.TextInput<StyledInputProps>`
   color: ${(props) =>
     props.disabled ? props.theme.colors.greyMedium : props.theme.colors.black};
 `;
-
-export const IconContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-`;

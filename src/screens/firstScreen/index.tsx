@@ -1,5 +1,7 @@
 import BaseInput from "@/components/BaseInput";
+import BaseLinkInput from "@/components/BaseLinkInput";
 import BasePasswordInput from "@/components/BasePasswordInput";
+import BaseSearchInput from "@/components/BaseSearchInput";
 import theme from "@/shared/theme/theme";
 import { useState } from "react";
 import { View } from "react-native";
@@ -7,6 +9,7 @@ import { View } from "react-native";
 export default function FirstScreen() {
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
+  const [value3, setValue3] = useState("");
   return (
     <View
       style={{
@@ -16,7 +19,7 @@ export default function FirstScreen() {
         backgroundColor: theme.colors.white,
       }}
     >
-      <View style={{ width: "80%", marginTop: 20 }}>
+      <View style={{ width: "80%", marginTop: 20, gap: 16 }}>
         <BaseInput
           required
           label="Título"
@@ -28,11 +31,20 @@ export default function FirstScreen() {
         <BasePasswordInput
           required
           label="Senha"
-          disabled
           placeholder="Teste input container"
           supportText="Texto de suporte"
           value={value2}
           onChangeText={setValue2}
+        />
+        <BaseSearchInput
+          placeholder="Pesquise aqui"
+          value={value3}
+          onChangeText={setValue3}
+        />
+        <BaseLinkInput
+          placeholder="Insira o link"
+          value={value}
+          onChangeText={setValue}
         />
       </View>
     </View>

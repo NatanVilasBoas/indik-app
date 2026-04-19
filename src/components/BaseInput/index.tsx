@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { TextInputProps } from "react-native";
 import BaseInputContainer from "../BaseInputContainer";
 import Icon from "../Icon";
-import { IconContainer, StyledInput } from "./styles";
+import { StyledInput } from "./styles";
 
 interface BaseInputProps extends TextInputProps {
   label?: string;
   required?: boolean;
   supportText?: string;
   disabled?: boolean;
+  showLockIcon?: boolean;
+  leftIcon?: React.ReactNode;
 }
 
 export default function BaseInput({
@@ -18,6 +20,8 @@ export default function BaseInput({
   value,
   onChangeText,
   disabled = false,
+  leftIcon,
+  showLockIcon = true,
   ...props
 }: BaseInputProps) {
   const [isFocused, setIsFocused] = useState(false);
@@ -35,6 +39,17 @@ export default function BaseInput({
       supportText={supportText}
       disabled={disabled}
       focused={isFocused}
+      leftIcon={leftIcon}
+      rightIcon={
+        <>
+          {value !== "" && disabled === false && isFocused && (
+            <Icon name="clear" onPress={handleClearInput} />
+          )}
+          {disabled && showLockIcon && (
+            <Icon name="lockThin" color="black" size={18} />
+          )}
+        </>
+      }
     >
       <StyledInput
         editable={!disabled}
@@ -45,12 +60,6 @@ export default function BaseInput({
         onBlur={() => setIsFocused(false)}
         {...props}
       />
-      <IconContainer>
-        {value !== "" && disabled === false && isFocused && (
-          <Icon name="clear" onPress={handleClearInput} />
-        )}
-        {disabled && <Icon name="lockThin" color="black" size={18} />}
-      </IconContainer>
     </BaseInputContainer>
   );
 }

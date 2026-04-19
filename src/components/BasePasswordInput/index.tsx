@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { TextInputProps } from "react-native";
+import { TextInputProps, View } from "react-native";
 import BaseInputContainer from "../BaseInputContainer";
 import Icon from "../Icon";
-import { IconContainer, StyledInput } from "./styles";
+import { StyledInput } from "./styles";
 
 interface BasePasswordProps extends TextInputProps {
   label?: string;
@@ -30,6 +30,25 @@ const BasePasswordInput = ({
       supportText={supportText}
       disabled={disabled}
       focused={isFocused}
+      rightIcon={
+        <View style={{ paddingRight: 16 }}>
+          {showPassword ? (
+            <Icon
+              name="eyeOpen"
+              onPress={() => setShowPassword(false)}
+              color="black"
+              size={18}
+            />
+          ) : (
+            <Icon
+              name="eyeClose"
+              onPress={() => setShowPassword(true)}
+              color="black"
+              size={18}
+            />
+          )}
+        </View>
+      }
     >
       <StyledInput
         secureTextEntry={!showPassword}
@@ -41,23 +60,6 @@ const BasePasswordInput = ({
         onBlur={() => setIsFocused(false)}
         {...props}
       />
-      <IconContainer>
-        {showPassword ? (
-          <Icon
-            name="eyeOpen"
-            onPress={() => setShowPassword(false)}
-            color="black"
-            size={18}
-          />
-        ) : (
-          <Icon
-            name="eyeClose"
-            onPress={() => setShowPassword(true)}
-            color="black"
-            size={18}
-          />
-        )}
-      </IconContainer>
     </BaseInputContainer>
   );
 };

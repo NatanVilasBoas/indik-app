@@ -5,7 +5,9 @@ import { ArrowRightIcon } from "../../../assets/icons/ArrowRightIcon";
 import { ClearIcon } from "../../../assets/icons/ClearIcon";
 import EyeCloseIcon from "../../../assets/icons/EyeCloseIcon";
 import EyeOpenIcon from "../../../assets/icons/EyeOpenIcon";
+import LinkIcon from "../../../assets/icons/LinkIcon";
 import LockThinIcon from "../../../assets/icons/LockThinIcon";
+import SearchIcon from "../../../assets/icons/SearchIcon";
 
 const iconRegistry = {
   clear: ClearIcon,
@@ -14,6 +16,8 @@ const iconRegistry = {
   arrowLeft: ArrowLeftIcon,
   eyeOpen: EyeOpenIcon,
   eyeClose: EyeCloseIcon,
+  search: SearchIcon,
+  link: LinkIcon,
 };
 
 export interface IconProps {
@@ -23,13 +27,13 @@ export interface IconProps {
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
   testID?: string;
-  strokeWitdh?: string | number;
+  strokeWidth?: string | number;
 }
 
 export interface IconBase {
   size?: number;
   color?: string;
-  strokeWitdh?: string | number;
+  strokeWidth?: string | number;
   style?: StyleProp<ViewStyle>;
 }
 
@@ -43,7 +47,7 @@ export default function Icon({
   size,
   style,
   testID,
-  strokeWitdh = 0.5,
+  strokeWidth = 0.5,
 }: IconProps) {
   const iconColor =
     theme.colors[color as keyof typeof theme.colors] || theme.colors.black;
@@ -57,7 +61,7 @@ export default function Icon({
         testID={testID ?? "pressable-icon"}
       >
         <SVGIcon
-          strokeWitdh={strokeWitdh}
+          strokeWidth={strokeWidth}
           color={iconColor}
           size={size}
           style={style}
@@ -68,7 +72,7 @@ export default function Icon({
 
   return (
     <View style={style}>
-      <SVGIcon color={iconColor} size={size} strokeWitdh={strokeWitdh} />
+      <SVGIcon color={iconColor} size={size} strokeWidth={strokeWidth} />
     </View>
   );
 }
