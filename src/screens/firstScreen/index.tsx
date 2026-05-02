@@ -1,3 +1,4 @@
+import BaseButton from "@/components/BaseButton";
 import BaseTokenInput from "@/components/BaseTokenInput";
 import theme from "@/shared/theme/theme";
 import { useState } from "react";
@@ -21,6 +22,14 @@ export default function FirstScreen() {
           onChange={setValue}
           disabled={true}
         />
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+          <BaseButton
+            disabled
+            variant="primary"
+            title="Button"
+            leftIcon="arrowLeft"
+          />
+        </View>
       </View>
     </View>
   );
