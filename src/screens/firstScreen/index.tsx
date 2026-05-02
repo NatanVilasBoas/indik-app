@@ -1,11 +1,10 @@
 import BaseButton from "@/components/BaseButton";
-import BaseTokenInput from "@/components/BaseTokenInput";
 import theme from "@/shared/theme/theme";
-import { useState } from "react";
+import { useRouter } from "expo-router";
 import { View } from "react-native";
 
 export default function FirstScreen() {
-  const [value, setValue] = useState<string[]>(Array(6).fill(""));
+  const router = useRouter();
   return (
     <View
       style={{
@@ -16,18 +15,11 @@ export default function FirstScreen() {
       }}
     >
       <View style={{ width: "80%", marginTop: 20, gap: 16 }}>
-        <BaseTokenInput
-          length={6}
-          value={value}
-          onChange={setValue}
-          disabled={true}
-        />
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <BaseButton
-            disabled
             variant="primary"
             title="Button"
-            leftIcon="arrowLeft"
+            onPress={() => router.push("/login")}
           />
         </View>
       </View>

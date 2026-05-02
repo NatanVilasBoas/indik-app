@@ -38,7 +38,7 @@ export const Container = styled(TouchableOpacity)<ContainerProps>`
   border-width: ${({ variant }) => (variant === "ghost" ? "2px" : "0px")};
 
   border-color: ${({ theme, variant }) =>
-    variant === "ghost" ? theme.colors.greyLight : "transparent"};
+    variant === "ghost" ? theme.colors.black : "transparent"};
 
   width: ${({ iconOnly }) => (iconOnly ? "48px" : "auto")};
 `;
@@ -49,7 +49,7 @@ interface LabelProps {
 }
 
 export const Label = styled.Text<LabelProps>`
-  font-family: ${({ theme }) => theme.fonts.PlusJakartaSansSemiBold};
+  font-family: ${({ theme }) => theme.fonts.PlusJakartaSansMedium};
   font-size: ${({ theme }) => theme.fonts.sizeSmall}px;
 
   color: ${({ theme, variant, disabled }) => {

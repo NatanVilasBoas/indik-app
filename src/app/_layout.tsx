@@ -1,8 +1,9 @@
 import Icon from "@/components/Icon";
 import ThemeProvider from "@/providers/ThemeProvider";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 
 export default function RootLayout() {
+  const router = useRouter();
   return (
     <ThemeProvider>
       <Stack
@@ -10,7 +11,14 @@ export default function RootLayout() {
           headerStyle: {
             backgroundColor: "transparent",
           },
-          headerLeft: () => <Icon name="arrowLeft" color="black" />,
+          headerLeft: () =>
+            router.canGoBack() ? (
+              <Icon
+                name="arrowLeft"
+                color="black"
+                onPress={() => router.back()}
+              />
+            ) : null,
         }}
       ></Stack>
     </ThemeProvider>
