@@ -11,6 +11,7 @@ export default function FirstScreen() {
   const [value, setValue] = useState("");
   const [value2, setValue2] = useState("");
   const [value3, setValue3] = useState("");
+  const [value4, setValue4] = useState("");
   return (
     <View
       style={{
@@ -49,8 +50,8 @@ export default function FirstScreen() {
         />
         <BaseValueInput
           placeholder="0,00"
-          value={value}
-          onChangeText={setValue}
+          value={value4}
+          onChangeText={setValue4}
         />
       </View>
     </View>

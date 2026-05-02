@@ -1,6 +1,6 @@
 import theme from "@/shared/theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useCallback } from "react";
 import BaseInput from "../BaseInput";
 import { IconText } from "./styles";
 
@@ -14,6 +14,20 @@ interface BaseValueInputProps {
   onChangeText: (text: string) => void;
 }
 
+function formatCurrency(value: string) {
+  if (!value || value.replace(/\D/g, "") === "") return "";
+  const numericValue = value.replace(/\D/g, "");
+  const intValue = parseInt(numericValue, 10);
+  const floatValue = intValue / 100;
+  return floatValue
+    .toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    })
+    .replace(/^R\$\s?/, "");
+}
+
 const BaseValueInput = ({
   label,
   required,
@@ -23,6 +37,14 @@ const BaseValueInput = ({
   value,
   onChangeText,
 }: BaseValueInputProps) => {
+  const handleChangeText = useCallback(
+    (text: string) => {
+      const numericValue = text.replace(/\D/g, "");
+      onChangeText(numericValue);
+    },
+    [onChangeText],
+  );
+
   return (
     <BaseInput
       label={label}
@@ -31,8 +53,10 @@ const BaseValueInput = ({
       disabled={disabled}
       placeholder={placeholder}
       showLockIcon={false}
-      value={value}
-      onChangeText={onChangeText}
+      value={formatCurrency(value)}
+      onChangeText={handleChangeText}
+      keyboardType="numeric"
+      inputMode="numeric"
       leftIcon={
         <LinearGradient
           colors={[
