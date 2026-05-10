@@ -1,7 +1,8 @@
 import BaseButton from "@/components/BaseButton";
 import BaseInput from "@/components/BaseInput";
 import BasePasswordInput from "@/components/BasePasswordInput";
-import React from "react";
+import BaseRadioButton from "@/components/BaseRadioButton";
+import React, { useState } from "react";
 import { Image, Text, View } from "react-native";
 import {
   ButtonContainer,
@@ -13,6 +14,7 @@ import {
 } from "./styles";
 
 const Login = () => {
+  const [rememberLogin, setRememberLogin] = useState(false);
   return (
     <Container>
       <ImageContainer>
@@ -22,7 +24,11 @@ const Login = () => {
         <BaseInput placeholder="E-mail" />
         <View style={{ gap: 8 }}>
           <BasePasswordInput placeholder="Digite sua senha" />
-          <Text>Lembrar login</Text>
+          <BaseRadioButton
+            label="Lembrar login"
+            value={rememberLogin}
+            onValueChange={(value) => setRememberLogin(value)}
+          />
         </View>
       </FormContainer>
       <ButtonContainer>
