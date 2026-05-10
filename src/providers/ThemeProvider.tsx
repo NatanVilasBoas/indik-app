@@ -1,5 +1,7 @@
 import theme from "@/shared/theme/theme";
 import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect } from "react";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 
 export default function ThemeProvider({
@@ -7,6 +9,8 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
+  SplashScreen.preventAutoHideAsync();
+
   const [fontsLoaded] = useFonts({
     DMSansBold: require("../../assets/fonts/Dm_Sans/DMSans-Bold.ttf"),
     DMSansExtraBold: require("../../assets/fonts/Dm_Sans/DMSans-ExtraBold.ttf"),
@@ -25,6 +29,11 @@ export default function ThemeProvider({
     PlusJakartaSansSemiBold: require("../../assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-SemiBold.ttf"),
   });
 
-  if (!fontsLoaded) return null;
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
 }
